@@ -8,16 +8,19 @@ function bookCard() {
             <h3>Book Title</h3>
         </div>
         <div className='book-card-author'>
-            <h4>Author</h4>
+            <p>Author:  {"jatin"}</p>    
         </div>
         <div className='book-card-genre'>
-            <h4>Genre</h4>
+            <p>Publisher</p>
         </div>
         <div className='book-card-description'>
-            <p>Description</p>
+            <p>Version</p>
         </div>
         <div className='book-card-availability'>
-            <h4>Availability</h4>
+            <p>Availability</p>
+        </div>
+        <div className="book-card-total">
+            <p>Total Copies</p>
         </div>
     </div>
   )

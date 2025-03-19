@@ -34,6 +34,8 @@ func main() {
 	})
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	router.POST("/searchlibrary", handlers.SearchLibrary)
+	router.POST("/checkuser", handlers.CheckUser)
 	// router.POST("/getdata", handlers.Test)
 	// router.DELETE("/del", handlers.Del)
 	// @title Library Management System API

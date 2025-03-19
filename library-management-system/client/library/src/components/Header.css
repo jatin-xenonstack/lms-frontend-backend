@@ -1,0 +1,36 @@
+.navbar{
+    display: flex;
+    background-color: #8345B6;
+
+}
+li{
+    margin-top: -9px;
+    text-decoration: none;
+    list-style: none;
+    padding: 10px;
+    color:white;
+    position: absolute;
+    left:65px;
+    font-size: 20px;
+}
+.profile{
+    margin-top: 9px;
+    position: absolute;
+    padding: 10px;
+    font-size: 20px;
+    right: 15px;
+    color: white;
+    cursor: pointer;
+}
+li:hover{
+    background-color:black;
+    border-radius: 5px;
+    cursor: pointer;
+
+
+}
+.profile:hover{
+    background-color:black;
+    border-radius: 5px;
+    cursor: pointer;
+}
