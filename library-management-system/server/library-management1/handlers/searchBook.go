@@ -27,14 +27,16 @@ func SearchBook(c *gin.Context) {
 	fmt.Println(q)
 	// search := c.Query(q)
 	// fmt.Println(search)
+	user, _ := c.Get("currentUser")
+	userData := user.(models.User)
+	var library models.LibraryUser
+	database.DB.Where("user_id = ?", userData.ID).Find(&library)
 	if q == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Search query is required"})
 		return
 	}
 
-	database.DB.Model(&models.BookInventory{}).Where("title ILIKE ?", "%"+q+"%").
-		Or("author ILIKE ?", "%"+q+"%").
-		Or("publisher ILIKE ?", "%"+q+"%").
+	database.DB.Model(&models.BookInventory{}).Where("title ILIKE ?", "%"+q+"%").Where("library_id = ?", library.LibraryId).
 		Find(&allBooks)
 
 	c.JSON(http.StatusOK, gin.H{"data": allBooks})

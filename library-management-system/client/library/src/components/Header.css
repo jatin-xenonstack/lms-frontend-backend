@@ -3,7 +3,7 @@
     background-color: #8345B6;
 
 }
-li{
+.navbar > ul > li{
     margin-top: -9px;
     text-decoration: none;
     list-style: none;
@@ -22,7 +22,7 @@ li{
     color: white;
     cursor: pointer;
 }
-li:hover{
+.navbar > ul > li:hover{
     background-color:black;
     border-radius: 5px;
     cursor: pointer;

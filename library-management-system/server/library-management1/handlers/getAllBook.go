@@ -31,7 +31,7 @@ func GetAllBook(c *gin.Context) {
 	database.DB.Where("user_id = ?", userData.ID).Find(&library)
 
 	if library.LibraryId == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"message": "You have not registered your library yet"})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "You have not registered in any library yet"})
 		return
 	}
 

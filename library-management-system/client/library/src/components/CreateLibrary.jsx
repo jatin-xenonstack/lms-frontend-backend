@@ -11,71 +11,36 @@ const token = localStorage.getItem('token')
 function CreateLibrary() {
     const [val, setVal] = useState('')
     const [email, setEmail] = useState('')
-    const [checklibrary, setCheckLibrary] = useState(false)    
-    const [checkEmail, setCheckEmail] = useState(false)
-    const [id,setID] = useState('')
-    const [isDetail ,SetIsDetail] = useState(false)
-
+ 
   
 
-    const handler = (e) => {
-        SetIsDetail(false)
-        e.preventDefault();
-        libraryExist(val)
-        userExist(email)
-        SetIsDetail(true)
-        
-    }
-
-    const  libraryExist = async (val) => {
+   
+    const assignLibrary = async (val,email) => {
         try{
-            const data = await axios.post('http://localhost:8000/searchlibrary', {
-            "name": val
+            const data = await axios.post('http://localhost:8000/owner/create-library', {
+            "name": val,
+            "email": email
             },{
-            headers: {
+            headers: {  
                 'Authorization': `Bearer ${token}`
             }
             })
             console.log(data)
-            if(data.status === 200){
-                setCheckLibrary(true)
-            }
-        }
-        catch(err){ 
-            setCheckLibrary(false)
-            console.log(err.response.data)
-            toast.error(err.response.data.error);
-        }
-    }
-    const userExist = async (checkEmail) => {
-        try{
-            const data = await axios.post('http://localhost:8000/checkuser', {
-            "email": checkEmail
-            })
-            if(data.status === 200){
-                setCheckEmail(true)
-            }
-        }
-        catch(err){ 
-            setCheckEmail(false)
-            setID(err.response.data.id)
+            toast.success("Library Created Successfully")
+        } catch(err){
             console.log(err)
             toast.error(err.response.data.message);
         }
     }
-    useEffect(() => {   
-        console.log(checklibrary)
-        console.log(checkEmail)
-        if(isDetail){
-        if(checklibrary && checkEmail)
-        {
-            // submitform(val,email)
-            console.log(id)
-            toast.success("Library Created Successfully")
-        }
+  
+
+    const handler = (e) => {
+     
+        e.preventDefault();
+        assignLibrary(val,email);
+     
     }
-        
-    }, [checklibrary, checkEmail,isDetail])
+
 
     return (
         <div className='main-create'>
