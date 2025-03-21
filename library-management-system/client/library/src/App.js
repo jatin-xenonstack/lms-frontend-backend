@@ -9,6 +9,7 @@ import Admin from './components/Admin';
 import CreateLibrary from './components/CreateLibrary';
 import BookDetail from './components/BookDetail';
 import InsertBook from './components/InsertBook';
+import RegisterInLibrary from './components/RegisterInLibrary';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path = "/create" element = {<CreateLibrary/>} />
           <Route path = "/bookdetail" element = {<BookDetail/>} />
           <Route path = "/insert" element = {<InsertBook/>} />
+          <Route path = "register" element = {<RegisterInLibrary/>}/>
         </Routes>
       </div>
     </Router>

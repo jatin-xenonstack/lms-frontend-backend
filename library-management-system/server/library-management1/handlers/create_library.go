@@ -80,7 +80,7 @@ func CreateLibrary(c *gin.Context) {
 	var checkAdmin models.User
 	database.DB.Where("id = ?", checkExistUser.ID).Where("role = ?", "admin").Find(&checkAdmin)
 	if checkAdmin.ID != 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"message": "User is already Admin"})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Admin Can't create library"})
 		return
 	}
 
@@ -132,7 +132,7 @@ func CreateLibrary(c *gin.Context) {
 		database.DB.Model(models.User{}).Where("id = ?", checkExistUser.ID).Update("Role", "admin")
 		libraryData := models.LibraryUser{
 			UserId:    checkExistUser.ID,
-			LibraryId: library.LibraryId,
+			LibraryId: libraryData.ID,
 		}
 		database.DB.Create(&libraryData)
 		c.JSON(http.StatusOK, gin.H{"message": "Admin Assigned Successfully"})

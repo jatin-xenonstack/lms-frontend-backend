@@ -52,13 +52,18 @@ useEffect(() => {
         console.log(searchVal)
     }
     , [searchVal]);
+
+useEffect(() =>{
+    if(searchVal.length == 0)
+        fetchBooks();
+},[searchVal])
   return (
     <div className='book-detail'>
         <Header/>
             <div className="book-container">
             <img src={image} alt="" style = {{width:"200px"}}/>
             <div onChange = {handler}>
-            <SearchBar />
+            <SearchBar content = {"Search Book"}/>
             {handler}
             </div>
             <div className="card-maintain">
